@@ -5,6 +5,7 @@ const Gameboard = (() => {
     board.forEach((cell, index) => {
       const cellElement = document.createElement("div");
       cellElement.classList.add("square");
+      cellElement.id = index;
       document.querySelector("#gameboard").append(cellElement);
     });
   };
@@ -24,10 +25,21 @@ const Game = () => {
     currentPlayerIndex = 0;
     gameOver = false;
     Gameboard.displayBoard();
-    console.log("H");
+
+    const squares = document.querySelectorAll(".square");
+    squares.forEach((square) => {
+      square.addEventListener("click", handleClick);
+    });
   };
+
+  const handleClick = (event) => {
+    let index = parseInt(event.target.id);
+    console.log(index);
+  };
+
   return {
     start,
+    handleClick,
   };
 };
 
