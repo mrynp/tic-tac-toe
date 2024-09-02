@@ -9,17 +9,23 @@ body {
 }
 
 #gameboard {
-  width: 302px;
-  height: 302px;
+  width: 300px;
+  height: 300px;
   display: flex;
   flex-wrap: wrap;
-  background-color: rgb(62, 62, 62);
   justify-content: space-evenly;
   align-items: center;
+  border: 1px solid black;
 }
 
 .square {
   width: 100px;
   height: 100px;
   background-color: white;
+  border: solid 1px black;
+  box-sizing: border-box;
+}
+
+.play-btn {
+  margin: 20px 0;
 }
