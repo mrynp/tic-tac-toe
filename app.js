@@ -2,11 +2,14 @@ const Gameboard = (() => {
   let board = ["", "", "", "", "", "", "", "", ""];
 
   const displayBoard = () => {
+    const gameboard = document.querySelector("#gameboard");
+    gameboard.innerHTML = "";
     board.forEach((cell, index) => {
       const cellElement = document.createElement("div");
       cellElement.classList.add("square");
       cellElement.id = index;
-      document.querySelector("#gameboard").append(cellElement);
+      cellElement.textContent = cell;
+      gameboard.append(cellElement);
     });
     const squares = document.querySelectorAll(".square");
     squares.forEach((square) => {
@@ -16,7 +19,7 @@ const Gameboard = (() => {
 
   const update = (index, value) => {
     board[index] = value;
-    console.log(board);
+    displayBoard();
   };
 
   return {
@@ -42,18 +45,12 @@ const Game = (() => {
     currentPlayerIndex = 0;
     gameOver = false;
     Gameboard.displayBoard();
-    // const squares = document.querySelectorAll(".square");
-    // squares.forEach((square) => {
-    //   square.addEventListener("click", handleClick);
-    // });
   };
 
   const handleClick = (event) => {
     let index = parseInt(event.target.id);
-    console.log(index);
     Gameboard.update(index, players[currentPlayerIndex].mark);
     currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;
-    console.log(currentPlayerIndex);
   };
 
   return {
