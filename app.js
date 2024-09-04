@@ -100,4 +100,7 @@ function checkTie(board) {
   return board.every((cell) => cell !== "");
 }
 
-Game.start();
+const playBtn = document.querySelector(".play-btn");
+playBtn.addEventListener("click", () => {
+  Game.start();
+});
