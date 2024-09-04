@@ -51,6 +51,9 @@ const Game = (() => {
   };
 
   const handleClick = (event) => {
+    if (gameOver) {
+      return;
+    }
     let index = parseInt(event.target.id);
 
     if (Gameboard.getBoard()[index] !== "") return;
@@ -60,6 +63,9 @@ const Game = (() => {
     if (checkWin(Gameboard.getBoard(), players[currentPlayerIndex].mark)) {
       gameOver = true;
       console.log(`${players[currentPlayerIndex].name} won`);
+    } else if (checkTie(Gameboard.getBoard())) {
+      gameOver = true;
+      console.log("It's a tie");
     }
     currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;
   };
@@ -88,6 +94,10 @@ function checkWin(board) {
     }
   }
   return false;
+}
+
+function checkTie(board) {
+  return board.every((cell) => cell !== "");
 }
 
 Game.start();
