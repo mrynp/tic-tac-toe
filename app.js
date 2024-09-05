@@ -46,6 +46,7 @@ const Game = (() => {
   let players = [];
   let currentPlayerIndex = 0;
   let gameOver = false;
+  const message = document.querySelector(".message");
 
   const start = () => {
     players = [createPlayer("Player 1", "X"), createPlayer("Player 2", "O")];
@@ -73,12 +74,12 @@ const Game = (() => {
         });
       }
       gameOver = true;
+      message.textContent = `${players[currentPlayerIndex].mark} wins!!`;
       playAgainBtn.style.display = "block";
-      console.log(`${players[currentPlayerIndex].name} won`);
     } else if (checkTie(Gameboard.getBoard())) {
       gameOver = true;
-      console.log("It's a tie");
       playAgainBtn.style.display = "block";
+      message.textContent = "It's a tie";
     }
     currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;
   };
@@ -87,6 +88,7 @@ const Game = (() => {
     for (let i = 0; i < 9; i++) {
       Gameboard.update(i, "");
     }
+    message.textContent = "";
     start();
   };
 
@@ -124,7 +126,6 @@ function checkTie(board) {
 const playBtn = document.querySelector(".play-btn");
 playBtn.addEventListener("click", () => {
   Game.start();
-  console.log("hel");
 });
 
 const playAgainBtn = document.querySelector(".playagain-btn");
