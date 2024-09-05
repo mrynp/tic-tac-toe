@@ -3,6 +3,10 @@ const Gameboard = (() => {
 
   const displayBoard = () => {
     const gameboard = document.querySelector("#gameboard");
+    const match = document.querySelector(".match");
+    const intro = document.querySelector(".intro");
+    intro.classList.add("fadeOut");
+    match.classList.add("fadeIn");
     gameboard.innerHTML = "";
     board.forEach((cell, index) => {
       const cellElement = document.createElement("div");
@@ -111,6 +115,7 @@ function checkTie(board) {
 const playBtn = document.querySelector(".play-btn");
 playBtn.addEventListener("click", () => {
   Game.start();
+  console.log("hel");
 });
 
 const playAgainBtn = document.querySelector(".playagain-btn");
