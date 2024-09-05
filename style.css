@@ -9,21 +9,24 @@ body {
 }
 
 #gameboard {
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  border: 1px solid black;
+  background-image: url(assets/board.png);
+  background-position: center;
+  background-size: contain;
 }
 
 .square {
-  width: 100px;
-  height: 100px;
-  background-color: white;
-  border: solid 1px black;
+  width: 115px;
+  height: 115px;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .play-btn {
