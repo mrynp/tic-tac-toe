@@ -70,9 +70,17 @@ const Game = (() => {
     currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;
   };
 
+  const playAgain = () => {
+    for (let i = 0; i < 9; i++) {
+      Gameboard.update(i, "");
+    }
+    start();
+  };
+
   return {
     start,
     handleClick,
+    playAgain,
   };
 })();
 
@@ -103,4 +111,9 @@ function checkTie(board) {
 const playBtn = document.querySelector(".play-btn");
 playBtn.addEventListener("click", () => {
   Game.start();
+});
+
+const playAgainBtn = document.querySelector(".playagain-btn");
+playAgainBtn.addEventListener("click", () => {
+  Game.playAgain();
 });
