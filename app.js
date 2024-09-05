@@ -54,6 +54,7 @@ const Game = (() => {
     gameOver = false;
     Gameboard.displayBoard();
     playAgainBtn.style.display = "none";
+    message.textContent = `${players[currentPlayerIndex].mark} make a move`;
   };
 
   const handleClick = (event) => {
@@ -74,7 +75,7 @@ const Game = (() => {
         });
       }
       gameOver = true;
-      message.textContent = `${players[currentPlayerIndex].mark} wins!!`;
+      message.textContent = `${players[currentPlayerIndex].mark} wins!`;
       playAgainBtn.style.display = "block";
     } else if (checkTie(Gameboard.getBoard())) {
       gameOver = true;
@@ -82,6 +83,9 @@ const Game = (() => {
       message.textContent = "It's a tie";
     }
     currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;
+    if (!gameOver) {
+      message.textContent = `${players[currentPlayerIndex].mark} make a move`;
+    }
   };
 
   const playAgain = () => {

@@ -123,4 +123,5 @@ button:focus {
   position: absolute;
   top: -20%;
   font-size: 40px;
+  letter-spacing: 2px;
 }
