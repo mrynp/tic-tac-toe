@@ -65,6 +65,12 @@ const Game = (() => {
     Gameboard.update(index, players[currentPlayerIndex].mark);
 
     if (checkWin(Gameboard.getBoard(), players[currentPlayerIndex].mark)) {
+      const winningMark = checkWin(Gameboard.getBoard());
+      if (winningMark) {
+        winningMark.forEach((index) => {
+          document.getElementById(index).style.color = "#c30010";
+        });
+      }
       gameOver = true;
       console.log(`${players[currentPlayerIndex].name} won`);
     } else if (checkTie(Gameboard.getBoard())) {
@@ -102,10 +108,11 @@ function checkWin(board) {
   for (let i = 0; i < winningCombinations.length; i++) {
     const [a, b, c] = winningCombinations[i];
     if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-      return true;
+      // return true;
+      return [a, b, c];
     }
   }
-  return false;
+  return null;
 }
 
 function checkTie(board) {
