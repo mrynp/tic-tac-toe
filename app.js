@@ -52,6 +52,7 @@ const Game = (() => {
     currentPlayerIndex = 0;
     gameOver = false;
     Gameboard.displayBoard();
+    playAgainBtn.style.display = "none";
   };
 
   const handleClick = (event) => {
@@ -72,10 +73,12 @@ const Game = (() => {
         });
       }
       gameOver = true;
+      playAgainBtn.style.display = "block";
       console.log(`${players[currentPlayerIndex].name} won`);
     } else if (checkTie(Gameboard.getBoard())) {
       gameOver = true;
       console.log("It's a tie");
+      playAgainBtn.style.display = "block";
     }
     currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;
   };
@@ -108,7 +111,6 @@ function checkWin(board) {
   for (let i = 0; i < winningCombinations.length; i++) {
     const [a, b, c] = winningCombinations[i];
     if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-      // return true;
       return [a, b, c];
     }
   }
