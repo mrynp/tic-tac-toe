@@ -6,27 +6,32 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  font-family: "Gochi Hand", system-ui;
 }
 
 #gameboard {
   width: 400px;
-  height: 400px;
+  height: 420px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   background-image: url(assets/board.png);
   background-position: center;
-  background-size: contain;
+  background-size: cover;
+  padding: 30px;
 }
 
 .square {
-  width: 115px;
-  height: 115px;
-  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  /* box-sizing: border-box; */
+
+  margin: 0px 15px;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 88px;
 }
 
 .play-btn {
